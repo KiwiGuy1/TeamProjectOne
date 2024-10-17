@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-//JF Looks grumnpy now but hopefully should fix as we go
+//JF should be good?
 
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
@@ -24,9 +24,8 @@ namespace TeamProject.Controllers
 
         public IActionResult Index()
         {
-            //JF Category and Name will probably need some work
-            var movies = context.Manager.Include(m => m.Category).OrderBy(m => m.Name).ToList();
-            return View(manager);
+            var managers = context.Managers.Include(m => m.Category).OrderBy(m => m.FirstName).ToList();
+            return View(managers);
         }
     }
 }

@@ -1,4 +1,4 @@
-//JF I see AddDBContext is grumpy but might fix as rest of program is fixed
+//JF I think its good now
 
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
@@ -27,7 +27,6 @@ namespace TeamProject
 
             services.AddControllersWithViews();
 
-            //Keep an eye on this line vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv
             services.AddDbContext<ManagerContext>(options =>           
                 options.UseSqlServer(
                     Configuration.GetConnectionString("ManagerContext")));

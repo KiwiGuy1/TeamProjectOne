@@ -1,12 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿// JF Should be good
+
+using Microsoft.AspNetCore.Mvc;
 
 namespace TeamProject.Models
 {
-    public class Category : Controller
+    public class Category
     {
-        public IActionResult Index()
-        {
-            return View();
-        }
+        public int CategoryId { get; set; }
+        public string Name { get; set; }
     }
 }

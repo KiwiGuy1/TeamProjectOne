@@ -1,13 +1,12 @@
-﻿//JF Currently working on
-
+﻿//JF Mostly good, probably put some better error messages for like phone number
 using System.ComponentModel.DataAnnotations;
 
 namespace TeamProject.Models
 {
-    public class Movie
+    public class Manager
     {
         // EF Core will configure the database to generate this value
-        public int ContactId { get; set; }
+        public int ManagerId { get; set; }
 
         [Required(ErrorMessage = "Please enter a first name.")]
         public string FirstName { get; set; }
@@ -27,6 +26,7 @@ namespace TeamProject.Models
         [Required(ErrorMessage = "Please select a category.")]
         [Range(1, int.MaxValue, ErrorMessage = "Category ID must be greater than zero.")]
         public int CategoryId { get; set; }
+        public Category Category { get; set; }
 
 
         public string Slug => $"{FirstName}-{LastName}".ToLowerInvariant().Replace(' ', '-');

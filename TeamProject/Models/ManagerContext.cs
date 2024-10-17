@@ -1,4 +1,4 @@
-﻿//JF Currently working on
+﻿//JF I think this is good
 
 using Microsoft.EntityFrameworkCore;
 using TeamProject.Controllers;
@@ -26,7 +26,7 @@ namespace TeamProject.Models
             modelBuilder.Entity<Manager>().HasData(
                 new Manager
                 {
-                    ContactId = 1,
+                    ManagerId = 1,
                     FirstName = "Delores",
                     LastName = "Del Rio",
                     Phone = "555-987-6543",
@@ -36,7 +36,7 @@ namespace TeamProject.Models
                 },
                 new Manager
                 {
-                    ContactId = 2,
+                    ManagerId = 2,
                     FirstName = "Efren",
                     LastName = "Herrera",
                     Phone = "555-456-7890",
@@ -46,7 +46,7 @@ namespace TeamProject.Models
                 },
                 new Manager
                 {
-                    ContactId = 2,
+                    ManagerId = 2,
                     FirstName = "Mary Ellen",
                     LastName = "Walton",
                     Phone = "555-123-4567",

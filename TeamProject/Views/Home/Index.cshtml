@@ -1,38 +1,38 @@
-﻿@*JF Needs lots of work*@
+﻿@*JF Needs work but close-ish*@
 
 @model List<Movie>
 @{
-    ViewBag.Title = "My Movies";
+    ViewBag.Title = "Contact Manager";
 }
 
-<h2>Movie List</h2>
-
-<a asp-controller="Movie" asp-action="Add">Add New Movie</a>
+<a asp-controller="Manager" asp-action="Add">Add Contact</a>
 <table class="table table-bordered table-striped">
     <thead>
         <tr>
-            <th>Name</th>
-            <th>Year</th>
-            <th>Genre</th>
-            <th>Rating</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Phone</th>
+            <th>Email</th>
+            <th>Category</th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-        @foreach (var movie in Model)
+        @foreach (var manager in Model)
         {
             <tr>
-                <td>@movie.Name</td>
-                <td>@movie.Year</td>
-                <td>@movie.Genre.Name</td>
-                <td>@movie.Rating</td>
+                <td>@manager.FirstName</td>
+                <td>@manager.LastName</td>
+                <td>@manager.Phone</td>
+                <td>@manager.Email</td>
+                <td>@manager.Category.Name</td>
                 <td>
-                    <a asp-controller="Movie" asp-action="Edit"
-                       asp-route-id="@movie.MovieId"
-                       asp-route-slug="@movie.Slug">Edit</a>
-                    <a asp-controller="Movie" asp-action="Delete"
-                       asp-route-id="@movie.MovieId"
-                       asp-route-slug="@movie.Slug">Delete</a>
+                    <a asp-controller="Manager" asp-action="Edit"
+                       asp-route-id="@manager.ManagerId"
+                       asp-route-slug="@manager.Slug">Edit</a>
+                    <a asp-controller="Manager" asp-action="Delete"
+                       asp-route-id="@manager.ManagerId"
+                       asp-route-slug="@manager.Slug">Delete</a>
                 </td>
             </tr>
         }
