@@ -4,34 +4,29 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using System.Threading.Tasks;
+//JF Looks grumnpy now but hopefully should fix as we go
+
+using System.Linq;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using TeamProject.Models;
 
 namespace TeamProject.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private ManagerContext context { get; set; }
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ManagerContext ctx)
         {
-            _logger = logger;
+            context = ctx;
         }
 
         public IActionResult Index()
         {
-            return View();
-        }
-
-        public IActionResult Privacy()
-        {
-            return View();
-        }
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            //JF Category and Name will probably need some work
+            var movies = context.Manager.Include(m => m.Category).OrderBy(m => m.Name).ToList();
+            return View(manager);
         }
     }
 }
