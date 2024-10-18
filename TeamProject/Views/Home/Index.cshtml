@@ -1,12 +1,14 @@
 ﻿@*JF Needs work but close-ish*@
 
-@model List<Movie>
+@model List<Contact>
 @{
     ViewBag.Title = "Contact Manager";
 }
 
-<a asp-controller="Manager" asp-action="Add">Add Contact</a>
-<table class="table table-bordered table-striped">
+<h1>Contact Manager</h1>
+<a asp-controller="Contact" asp-action="Add" class="btn btn-primary">Add Contact</a>
+
+<table class="table table-striped">
     <thead>
         <tr>
             <th>First Name</th>
@@ -14,26 +16,17 @@
             <th>Phone</th>
             <th>Email</th>
             <th>Category</th>
-            <th></th>
         </tr>
     </thead>
     <tbody>
-        @foreach (var manager in Model)
+        @foreach (var contact in Model)
         {
             <tr>
-                <td>@manager.FirstName</td>
-                <td>@manager.LastName</td>
-                <td>@manager.Phone</td>
-                <td>@manager.Email</td>
-                <td>@manager.Category.Name</td>
-                <td>
-                    <a asp-controller="Manager" asp-action="Edit"
-                       asp-route-id="@manager.ManagerId"
-                       asp-route-slug="@manager.Slug">Edit</a>
-                    <a asp-controller="Manager" asp-action="Delete"
-                       asp-route-id="@manager.ManagerId"
-                       asp-route-slug="@manager.Slug">Delete</a>
-                </td>
+                <td><a asp-controller="Contact" asp-action="Details" asp-route-id="@contact.ContactId">@contact.FirstName</a></td>
+                <td><a asp-controller="Contact" asp-action="Details" asp-route-id="@contact.ContactId">@contact.LastName</a></td>
+                <td>@contact.Phone</td>
+                <td>@contact.Email</td>
+                <td>@contact.Category?.Name</td>
             </tr>
         }
     </tbody>

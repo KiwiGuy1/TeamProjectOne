@@ -1,17 +1,18 @@
 ﻿//JF I think this is good
 
 using Microsoft.EntityFrameworkCore;
+using System;
 using TeamProject.Controllers;
 
 namespace TeamProject.Models
 {
-    public class ManagerContext : DbContext
+    public class ContactContext : DbContext
     {
-        public ManagerContext(DbContextOptions<ManagerContext> options)
+        public ContactContext(DbContextOptions<ContactContext> options)
             : base(options)
         { }
 
-        public DbSet<Manager> Managers { get; set; }
+        public DbSet<Contact> Contacts { get; set; }
         public DbSet<Category> Categories { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -23,36 +24,39 @@ namespace TeamProject.Models
                 new Category { CategoryId = 4, Name = "Other" }
             );
 
-            modelBuilder.Entity<Manager>().HasData(
-                new Manager
+            modelBuilder.Entity<Contact>().HasData(
+                new Contact
                 {
-                    ManagerId = 1,
+                    ContactId = 1,
                     FirstName = "Delores",
                     LastName = "Del Rio",
                     Phone = "555-987-6543",
                     Email = "delores@hotmail.com",
                     Organization = null,
-                    CategoryId = 2
+                    CategoryId = 2,
+                    DateAdded = DateTime.Now
                 },
-                new Manager
+                new Contact
                 {
-                    ManagerId = 2,
+                    ContactId = 2,
                     FirstName = "Efren",
                     LastName = "Herrera",
                     Phone = "555-456-7890",
                     Email = "efren@aol.com",
                     Organization = null, 
-                    CategoryId = 3
+                    CategoryId = 3,
+                    DateAdded = DateTime.Now
                 },
-                new Manager
+                new Contact
                 {
-                    ManagerId = 2,
+                    ContactId = 3,
                     FirstName = "Mary Ellen",
                     LastName = "Walton",
                     Phone = "555-123-4567",
                     Email = "MaryEllen@yahoo.com",
                     Organization = null,
-                    CategoryId = 1
+                    CategoryId = 1,
+                    DateAdded = DateTime.Now
                 }
             );
         }

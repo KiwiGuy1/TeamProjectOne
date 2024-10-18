@@ -27,9 +27,9 @@ namespace TeamProject
 
             services.AddControllersWithViews();
 
-            services.AddDbContext<ManagerContext>(options =>           
+            services.AddDbContext<ContactContext>(options =>           
                 options.UseSqlServer(
-                    Configuration.GetConnectionString("ManagerContext")));
+                    Configuration.GetConnectionString("ContactContext")));
         }
 
         // Use this method to configure the HTTP request pipeline.
