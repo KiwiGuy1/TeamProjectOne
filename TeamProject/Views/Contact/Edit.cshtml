@@ -3,12 +3,14 @@
 @model TeamProject.Models.Contact
 
 @{
-    ViewBag.Title = "Edit";
+
 }
 
-<h1>Edit Contact</h1>
+<h2>Edit Contact</h2>
 
 <form asp-action="Edit">
+    <input type="hidden" asp-for="ContactId" />
+
     <div class="form-group">
         <label asp-for="FirstName"></label>
         <input asp-for="FirstName" class="form-control" />
@@ -38,6 +40,7 @@
         <label asp-for="Organization"></label>
         <input asp-for="Organization" class="form-control" />
     </div>
+
     <button type="submit" class="btn btn-success">Edit</button>
     <a asp-action="Details" class="btn btn-danger">Cancel</a>
 </form>

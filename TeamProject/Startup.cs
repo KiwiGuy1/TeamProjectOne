@@ -20,6 +20,9 @@ namespace TeamProject
         // Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<ContactContext>(options =>
+            options.UseSqlServer(Configuration.GetConnectionString("ContactContext")));
+            
             services.AddRouting(options => {
                 options.LowercaseUrls = true;
                 options.AppendTrailingSlash = true;
@@ -27,9 +30,8 @@ namespace TeamProject
 
             services.AddControllersWithViews();
 
-            services.AddDbContext<ContactContext>(options =>           
-                options.UseSqlServer(
-                    Configuration.GetConnectionString("ContactContext")));
+            
+
         }
 
         // Use this method to configure the HTTP request pipeline.
@@ -44,7 +46,7 @@ namespace TeamProject
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}/{slug?}");
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
             });
         }
     }
