@@ -32,6 +32,7 @@ namespace TeamProject.Controllers
         {
             ViewBag.Categories = context.Categories.OrderBy(c => c.Name).ToList();
             var contact = context.Contacts.Find(id);
+
             return View(contact);
         }
     }
