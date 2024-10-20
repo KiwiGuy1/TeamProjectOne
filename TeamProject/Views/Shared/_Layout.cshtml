@@ -1,19 +1,23 @@
-﻿@*JF This one should be good I think*@
-
-<!DOCTYPE html>
-<html>
+﻿<!DOCTYPE html>
+<html lang="en">
 <head>
-    <meta name="viewport" content="width=device-width" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title</title>
-    <link rel="stylesheet" type="text/css"
-          href="~/lib/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/lib/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/css/site.css">
 </head>
-<body>
-    <div class="container">
-        <header class="jumbotron">
-            <h1>Contact Manager</h1>
-        </header>
+<body class="wrapper">
+    <header class="bg-dark text-white text-center py-3 mb-3">
+        <h1 class="display-4">Contact Manager</h1>
+    </header>
+    <div class="container-fluid content">
         @RenderBody()
     </div>
+    <footer class="bg-dark text-white text-center py-3">
+        <p class="mb-0">Professional Team &copy; 2024</p>
+    </footer>
 </body>
+
+
 </html>

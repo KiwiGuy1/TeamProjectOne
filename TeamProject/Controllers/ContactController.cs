@@ -87,20 +87,23 @@ namespace TeamProject.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (contact.ContactId == 0)
-                    context.Contacts.Add(contact);
-                else
-                    context.Contacts.Update(contact);
+                context.Contacts.Update(contact);
                 context.SaveChanges();
                 return RedirectToAction("Index", "Home");
             }
-            else
-            {
-                ViewBag.Action = (contact.ContactId == 0) ? "Add" : "Edit";
-                ViewBag.Categories = context.Categories.OrderBy(c => c.Name).ToList();
-                return View(contact);
-            }
+
+            // Repopulate ViewBag.Categories for the view in case of validation failure
+            ViewBag.Action = "Edit";
+            ViewBag.Categories = context.Categories.OrderBy(c => c.Name)
+                .Select(c => new SelectListItem
+                {
+                    Value = c.CategoryId.ToString(),
+                    Text = c.Name
+                }).ToList();
+
+            return View(contact);
         }
+
 
         [HttpGet]
         public IActionResult Delete(int id)

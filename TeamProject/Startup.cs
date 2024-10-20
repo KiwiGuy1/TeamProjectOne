@@ -28,7 +28,7 @@ namespace TeamProject
                 options.AppendTrailingSlash = true;
             });
 
-            services.AddControllersWithViews();
+            services.AddControllersWithViews().AddDataAnnotationsLocalization();
 
             
 
